@@ -1,3 +1,5 @@
+
+
 // tailwind copied calendar
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -32,6 +34,7 @@ const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 				event_title: '',
 				event_date: '',
 				event_theme: 'blue',
+				location: '',
 
 				themes: [
 					{
@@ -130,8 +133,8 @@ fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/sc
         return response.json();
     })
     .then(data => {
-        // grabs favorite team from local storage
-        const favoriteTeam = localStorage.getItem('selectedImageId');
+        // grabs favorite teams
+        const favoriteTeam = document.getElementById(team.id);
     
         if (favoriteTeam) {
           const gamesData = data.weeks; 
@@ -148,11 +151,12 @@ fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/sc
                 const stadiumName = game.venue.name;
                 // checks if the game includes favoriteTeam
                 if (homeTeamName === favoriteTeam || awayTeamName === favoriteTeam) {
-					// get and pull?
+					// creates event on the calendar and shows event info
 					self.events.push({
 						event_date: scheduledDate,
 						event_title: `${homeTeamName} vs ${awayTeamName}`,
-						event_theme: 'blue' 
+						event_theme: 'blue',
+						location: stadiumName,
 					});
 				}
               }
