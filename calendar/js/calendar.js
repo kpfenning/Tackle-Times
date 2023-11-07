@@ -149,7 +149,7 @@ fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/sc
                 // checks if the game includes favoriteTeam
                 if (homeTeamName === favoriteTeam || awayTeamName === favoriteTeam) {
 					// get and pull?
-					this.events.push({
+					self.events.push({
 						event_date: scheduledDate,
 						event_title: `${homeTeamName} vs ${awayTeamName}`,
 						event_theme: 'blue' 
