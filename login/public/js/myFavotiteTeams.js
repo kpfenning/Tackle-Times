@@ -9,14 +9,10 @@ function toggleBackground(element) {
     element.parentElement.classList.toggle('selected');
 }
 
+<<<<<<< HEAD:css-js/myFavotiteTeams.js
+=======
 // Rest of your code remains the same
-
-
-
-
-
-
-
+>>>>>>> 5543264f96e2a6ec36dacc82a8d79626cb4849fb:login/public/js/myFavotiteTeams.js
 
 function initializeSelectedTeams() {
     const selectedTeams = JSON.parse(localStorage.getItem("selectedTeams")) || [];
