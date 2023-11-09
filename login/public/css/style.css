@@ -65,6 +65,51 @@ body {
   /* Set background video properties */
 }
 
+@media (max-width: 1100px) {
+  header {
+    padding: 20px; 
+  }
+
+  .TakleTimes {
+    font-size: 160px;
+  }
+  
+  .takle,
+  .time {
+    font-size: 150px;
+  }
+}
+
+@media (max-width: 760px) {
+  header {
+    padding: 20px; 
+  }
+
+  .TakleTimes {
+    font-size: 120px;
+  }
+  
+  .takle,
+  .time {
+    font-size: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 20px; 
+  }
+
+  .TakleTimes {
+    font-size: 50px;
+  }
+  
+  .takle,
+  .time {
+    font-size: 85px;
+  }
+}
+
 a {
   color: var(--dark);
   text-decoration: none;
@@ -77,7 +122,7 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
+  background:rgb(25, 27, 39);
   color: var(--light);
 }
 
@@ -97,6 +142,8 @@ aside {
 
 nav {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--secondary);
 }
 
@@ -108,13 +155,24 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: red;
+  background-color: rgb(25, 27, 39);
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  
+  nav a {
+    padding: 10px;
+    border-top: 1px solid var(--light); 
+  }
 }
 
 .gallery {
   flex: 4;
-  background-color: #fff;
+  background-color: rgb(25, 27, 39);
   padding: 50px;
   display: flex;
   flex-flow: row wrap;
@@ -170,7 +228,7 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  background-color: rgb(40, 49, 93);
   color: var(--light);
 }
 
@@ -207,4 +265,55 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+}
+
+/* Contact Us */
+
+.contacts {
+  color: var(--light);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+.contact-card {
+  color: var(--light);
+  margin: 12px;
+  padding: 20px;
+}
+
+.contact-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 7px double var(--light);
+}
+
+@media (max-width: 600px) {
+  .contacts {
+    grid-template-columns: 1fr; 
+  }
+}
+
+.contact-card {
+  text-align: center;
+}
+
+.contact-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* About Us */
+
+.about-us {
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
