@@ -11,10 +11,6 @@ Team.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     imageSrc: {
       type: DataTypes.STRING,
       allowNull: false,

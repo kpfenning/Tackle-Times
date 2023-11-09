@@ -14,12 +14,12 @@ function initializeSelectedTeams() {
 
     selectedTeams.forEach(team => {
         // Find the corresponding team element by ID
-        const teamElement = document.getElementById(team.id);
+        const teamElement = document.getElementById(team.name);
 
         if (teamElement) {
             // Set the team's image source and ID
             teamElement.src = team.src;
-            teamElement.id = team.id;
+            teamElement.id = team.name;
 
             // Add the "active" class to mark it as selected
             teamElement.parentElement.classList.add('active');
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
 const teamsData = {
     teams: [
         {
-            id: 'team1',
+            name: 'team1',
             imageSrc: 'path-to-image1.png',
             altText: 'Team 1',
         },
         {
-            id: 'team2',
+            name: 'team2',
             imageSrc: 'path-to-image2.png',
             altText: 'Team 2',
         },
