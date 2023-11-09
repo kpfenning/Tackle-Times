@@ -1,35 +1,48 @@
 const router = require('express').Router();
-const { Teams } = require('../../models');
+const { Team } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+
+// GET all teams for favoritesSecltionPage
+router.get('/favoritesSecltionPage', async (req, res) => {
   try {
-    const newTeams = await Teams.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    const teamData = await Team.findAll({
+      include: [
+        {
+          model: Team,
+          attributes: ['id', 'imageSrc', 'altText'],
+        },
+      ],
     });
 
-    res.status(200).json(newTeams);
+    const teams = teamData.map((team) =>
+      team.get({ plain: true })
+    );
+    res.render('favoritesSecltionPage', {
+      teams,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const teamsData = await Teams.destroy({
+    const teamData = await Team.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
 
-    if (!teamsData) {
+    if (!teamData) {
       res.status(404).json({ message: 'No teams found with this id!' });
       return;
     }
 
-    res.status(200).json(teamsData);
+    res.status(200).json(teamData);
   } catch (err) {
     res.status(500).json(err);
   }

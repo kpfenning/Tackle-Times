@@ -1,16 +1,14 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#team-name').value.trim();
-  const description = document.querySelector('#team-desc').value.trim();
-  const away_team_name = document.querySelector('#away-team-name').value.trim();
-  const home_team_name = document.querySelector('#home-team-name').value.trim();
-  const image = document.querySelector('#team-image').value.trim();
+  const id = document.querySelector('#team-name').value.trim();
+  const imageSrc = document.querySelector('#team-logo').value.trim();
+  const altText = document.querySelector('#team-altText').value.trim();
 
-  if (name && away_team_name && home_team_name && image && description) {
-    const response = await fetch(`/api/projects`, {
+  if (id && imageSrc && altText) {
+    const response = await fetch(`/api/teams`, {
       method: 'POST',
-      body: JSON.stringify({ name, away_team_name, home_team_name, image, description }),
+      body: JSON.stringify({ id, imageSrc, altText}),
       headers: {
         'Content-Type': 'application/json',
       },

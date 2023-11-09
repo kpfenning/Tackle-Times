@@ -1,12 +1,14 @@
+// It routes commands to the Model and View parts.
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { Team, User } = require('../models');
 
 
-
+// Define a GET route handler for the '/' route
 router.get('/', async (req, res) => {
+  // Declare an async function to query the database
   try {
-    // Get all teams and JOIN with user data
+    // Find all Team records and include associated User records
     const teamData = await Team.findAll({
       include: [
         {
@@ -15,38 +17,50 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
-    // Serialize data so the template can read it
+    // Map the Team instances to plain JS objects
     const teams = teamData.map((team) => team.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
+    // Render the 'login' view template, passing teams data and login status
     res.render('login', { 
       teams, 
       logged_in: req.session.logged_in 
     });
+  // Catch any errors
   } catch (err) {
+    // Send a 500 error response
     res.status(500).json(err);
   }
 });
 
+// Define a GET route handler for path '/team/:id'
 router.get('/team/:id', async (req, res) => {
+  // Try to execute the following code
   try {
+    // Find a Team by its primary key from the request parameters
     const teamData = await Team.findByPk(req.params.id, {
+      // Eager load the associated User model
       include: [
         {
-          model: User,
+          // The associated model is User
+          model: Team,
+          // Only select the 'name' attribute from User
           attributes: ['name'],
         },
       ],
     });
 
+    // Get the team data as a plain JavaScript object
     const team = teamData.get({ plain: true });
 
+    // Render the 'team' template, passing the team data and
+    // whether the user is logged in
     res.render('team', {
       ...team,
       logged_in: req.session.logged_in
     });
+    // Catch any errors
   } catch (err) {
+    // Send a 500 error response
     res.status(500).json(err);
   }
 });
