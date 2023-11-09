@@ -4,30 +4,63 @@ const withAuth = require('../utils/auth');
 const { Team, User } = require('../models');
 
 
-// Define a GET route handler for the '/' route
-router.get('/', async (req, res) => {
-  // Declare an async function to query the database
+// GET all teams for favoritesSecltionPage
+router.get('/favoritesSecltionPage', async (req, res) => {
   try {
-    // Find all Team records and include associated User records
     const teamData = await Team.findAll({
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: Team,
+          attributes: ['name', 'imageSrc', 'altText'],
         },
       ],
     });
-    // Map the Team instances to plain JS objects
-    const teams = teamData.map((team) => team.get({ plain: true }));
 
-    // Render the 'login' view template, passing teams data and login status
-    res.render('login', { 
-      teams, 
-      logged_in: req.session.logged_in 
+    const teams = teamData.map((team) =>
+    team.get({ plain: true })
+    );
+    res.render('favoritesSecltionPage', {
+      teams,
+      loggedIn: req.session.loggedIn,
     });
-  // Catch any errors
   } catch (err) {
-    // Send a 500 error response
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET all teams for myfavoriteteams
+router.get('/myfavoriteteams', withAuth, async (req, res) => {
+  // Try to execute the following code
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Team }],
+    });
+    const teamData = await Team.findAll({
+      include: [
+        {
+          model: Team,
+          attributes: ['name', 'imageSrc', 'altText'],
+        },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+    const teams = teamData.map((team) =>
+    team.get({ plain: true })
+    );
+    // Render the'myfavoriteteams' template, passing the team data and
+    // whether the user is logged in
+    res.render('myfavoriteteams', {
+      ...user,
+      teams,
+      logged_in: req.session.logged_in
+    });
+    // Catch any errors
+    // If the error is a Sequelize error, send a 500 status code
+  } catch (err) {
     res.status(500).json(err);
   }
 });
@@ -65,62 +98,18 @@ router.get('/team/:id', async (req, res) => {
   }
 });
 
-// GET all teams for favoritesSecltionPage
-router.get('/favoritesSecltionPage', async (req, res) => {
-  try {
-    const teamData = await Team.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
-    });
-
-    const teams = teamData.map((team) =>
-      team.get({ plain: true })
-    );
-    res.render('favoritesSecltionPage', {
-      teams,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+router.get('/contactus', (req, res) => {
+  res.render('contactus');
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/myFavoriteTeams', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Team }],
-    });
-    const teamData = await Team.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
-    });
-
-    const user = userData.get({ plain: true });
-    const teams = teamData.map((team) =>
-    team.get({ plain: true })
-  );
-
-    res.render('myFavoriteTeams', {
-      ...user,
-      teams,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+router.get('/aboutus', (req, res) => {
+  res.render('aboutus');
 });
+
+router.get('/calendar', (req, res) => {
+  res.render('calendar');
+});
+
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
