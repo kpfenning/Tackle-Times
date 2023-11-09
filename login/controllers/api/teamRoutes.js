@@ -10,7 +10,7 @@ router.get('/favoritesSecltionPage', async (req, res) => {
       include: [
         {
           model: Team,
-          attributes: ['id', 'imageSrc', 'altText'],
+          attributes: ['name', 'imageSrc', 'altText'],
         },
       ],
     });
@@ -24,6 +24,38 @@ router.get('/favoritesSecltionPage', async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/myFavoriteTeams', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Team }],
+    });
+    const teamData = await Team.findAll({
+      include: [
+        {
+          model: Team,
+          attributes: ['name', 'imageSrc', 'altText'],
+        },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+    const teams = teamData.map((team) =>
+    team.get({ plain: true })
+  );
+
+    res.render('myFavoriteTeams', {
+      ...user,
+      teams,
+      logged_in: true
+    });
+  } catch (err) {
     res.status(500).json(err);
   }
 });

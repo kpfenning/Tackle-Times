@@ -19,20 +19,21 @@
         <h2>My Favorite Teams</h2>
     </div>
 
+    <div class="allTeams">
+    <div class="row" id="teamList">
+        {{#each teams as |team| }}
+        <div class="favoriteTeam">
+            <img id="{{name}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
+        </div>
+        {{/each}}
+    </div>
+</div>
+
     <div class="box">
         <h2>Calendar</h2>
     </div>
 </div>
 
-<div class="allTeams">
-    <div class="row" id="teamList">
-        {{#each teams as |team| }}
-        <div class="favoriteTeam">
-            <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
-        </div>
-        {{/each}}
-    </div>
-</div>
 
 
 

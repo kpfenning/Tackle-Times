@@ -1,8 +1,9 @@
 [
     {
-        "name": "",
-        "email":"",
-        "password": ""
+        "username": "sam",
+        "email":"sam@gmail.com",
+        "password": "Password1234",
+        "favorite_team_id": "49ers"
     }
     
 ]

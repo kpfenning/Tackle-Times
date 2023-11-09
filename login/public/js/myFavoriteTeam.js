@@ -1,14 +1,14 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const id = document.querySelector('#team-name').value.trim();
+  const name = document.querySelector('#team-name').value.trim();
   const imageSrc = document.querySelector('#team-logo').value.trim();
   const altText = document.querySelector('#team-altText').value.trim();
 
-  if (id && imageSrc && altText) {
+  if (name && imageSrc && altText) {
     const response = await fetch(`/api/teams`, {
       method: 'POST',
-      body: JSON.stringify({ id, imageSrc, altText}),
+      body: JSON.stringify({ name, imageSrc, altText}),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -23,10 +23,10 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  if (event.target.hasAttribute('data-name')) {
+    const name = event.target.getAttribute('data-name');
 
-    const response = await fetch(`/api/teams/${id}`, {
+    const response = await fetch(`/api/teams/${name}`, {
       method: 'DELETE',
     });
 
