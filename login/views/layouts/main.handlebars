@@ -7,17 +7,24 @@
   <title>Tackle Time</title>
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+
 </head>
 
 <body>
   <header>
         <div class="TakleTimes">
         
-        <h1 class="takle">Takle</h1>
+        <h1 class="takle">Tackle</h1>
         <h1 class="time">Time</h1>
     </div>
   </header>
   <nav>
+    <a href="/favoritesSecltionPage">Pick your Teams</a>
+    <a href="/myfavoriteteams">My Favorite Teams</a>
+    <a href="/calendar">Calendar</a>
+    <a href="/aboutUs">About Us</a>
+    <a href="/contactUs">Contact Us</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}

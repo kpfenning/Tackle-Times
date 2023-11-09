@@ -1,26 +1,26 @@
-const newFormHandler = async (event) => {
-  event.preventDefault();
+// const newFormHandler = async (event) => {
+//   event.preventDefault();
 
-  const name = document.querySelector('#team-name').value.trim();
-  const imageSrc = document.querySelector('#team-logo').value.trim();
-  const altText = document.querySelector('#team-altText').value.trim();
+//   const name = document.querySelector('#team-name').value.trim();
+//   const imageSrc = document.querySelector('#team-logo').value.trim();
+//   const altText = document.querySelector('#team-altText').value.trim();
 
-  if (name && imageSrc && altText) {
-    const response = await fetch(`/api/teams`, {
-      method: 'POST',
-      body: JSON.stringify({ name, imageSrc, altText}),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+//   if (name && imageSrc && altText) {
+//     const response = await fetch(`/api/teams`, {
+//       method: 'POST',
+//       body: JSON.stringify({ name, imageSrc, altText}),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
 
-    if (response.ok) {
-      document.location.replace('/myFavoriteTeam');
-    } else {
-      alert('Failed to save team');
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace('/myFavoriteTeam');
+//     } else {
+//       alert('Failed to save team');
+//     }
+//   }
+// };
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-name')) {
