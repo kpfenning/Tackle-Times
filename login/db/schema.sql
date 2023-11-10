@@ -14,7 +14,12 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS teams (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     name VARCHAR(900) NOT NULL, 
-    image_src VARCHAR(300) NOT NULL,
-    alt_text VARCHAR(300) NOT NULL
+    imageSrc VARCHAR(300) NOT NULL,
+    altText VARCHAR(300) NOT NULL,
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON DELETE CASCADE
 );
