@@ -249,5 +249,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const express = require('express');
+const app = express();
 
+app.get('/myfavoriteteams.html', (req, res) => {
+  // Your code to handle the request and send a response
+  res.send('This is the myfavoriteteams.html page');
+});
+
+// Start the server
+const port = 3000; // or any other port you prefer
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
+
+
+//   app.get('/myfavoriteteams.html',(req,res)=>{
+//     fs.readFile("/myfavoriteteams.html","utf-8",(err,content)=>{
+//         if(err){
+//             console.log(err)
+//         }else{
+//             var data = JSON.parse(content)
+//             res.json(data)
+//         }
+//     })
+// })
 // save teams to array with the labes team 1 team 2 team 3 team 4 team 5 team 6 then change id of them on the next page to team 1-6

@@ -154,4 +154,28 @@ function fetchAndDisplayTeamData() {
 // Call the function to fetch and display team data
 fetchAndDisplayTeamData();
 
-// save teams to array with the labes team 1 team 2 team 3 team 4 team 5 team 6 then change id of them on the next page to team 1-6
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      // Fetch teams from teams.json
+      const response = await fetch('teamData.json');
+      const nflTeams = await response.json();
+  
+      // Get the Handlebars template from HTML
+      const templateSource = document.getElementById('team-template').innerHTML;
+      const template = Handlebars.compile(templateSource);
+  
+      // Render teams and append them to the container
+      const teamContainer = document.getElementById('teamContainer');
+      teamContainer.innerHTML = template({ teams: nflTeams });
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+  
+  // Function to handle click event and toggle background
+  function toggleBackground(element) {
+    element.classList.toggle('selected');
+  }
+  

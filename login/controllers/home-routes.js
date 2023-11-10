@@ -8,12 +8,8 @@ const { Team, User } = require('../models');
 router.get('/favoritesSecltionPage', async (req, res) => {
   try {
     const teamData = await Team.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
+      
+      
     });
 
     const teams = teamData.map((team) =>
