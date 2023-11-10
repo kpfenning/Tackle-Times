@@ -150,6 +150,9 @@ const nflTeams = [
 		altText: 'panthers',
 	},
 ];
+
+
+
 // Function to filter schedule to only include selected team's games
 let selectedTeam = null;
 for (const team of nflTeams) {
