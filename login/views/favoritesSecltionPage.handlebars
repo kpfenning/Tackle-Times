@@ -5,21 +5,15 @@
             OPTIONS!</span></h1>
 </div>
 <div class="footballplayer">
-    <img src="./Nfl logos/Football player (1).png" alt="">
+    <img src="login\Nfl logos\Football player (1).png" alt="">
 </div>
 
 <div class="page-container">
-    <video autoplay loop muted playsinline id="background-video">
-        <source src="Nfl logos/Liam Mullany-football-players-practicing-in-a-stadium-342383-filmsupply.mp4"
-            type="video/mp4">
-    </video>
+
 
     <div class="next-btn">
         <a href="./myfavoriteteams.html" class="myButton" id="nextButton" style="display: none;">Next</a>
     </div>
-
-    <!-- Use Handlebars templates for teams -->
-
 
     <div class="All-Teams">
         <div class="teams">
@@ -30,8 +24,21 @@
         </div>
     </div>
 </div>
+
+
+<script id="team-template" type="text/x-handlebars-template">
+  {{#each teams}}
+    <div class="NflTeams">
+      <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
+    </div>
+  {{/each}}
+</script>
+
+
+
 <!-- Include Handlebars library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<!-- Include your Handlebars script here -->
 
-{{!-- <script src="./css-js/favoritesSecltionPage.js"></script> --}}
+<script src="login\public\js\favoritesSecltionPage.js"></script>
+
+
