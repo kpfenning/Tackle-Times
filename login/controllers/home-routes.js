@@ -47,35 +47,24 @@ app.use(express.static('css-js'));
 
 // GET all teams for myfavoriteteams
 router.get('/myfavoriteteams', withAuth, async (req, res) => {
-  // Try to execute the following code
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Team }],
     });
-    const teamData = await Team.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
-    });
 
+    // Extract user and teams from userData
     const user = userData.get({ plain: true });
-    const teams = teamData.map((team) =>
-    team.get({ plain: true })
-    );
-    // Render the'myfavoriteteams' template, passing the team data and
+    const teams = user.Teams; // Assuming the association is named "Teams"
+
+    // Render the 'myfavoriteteams' template, passing the team data and
     // whether the user is logged in
     res.render('myfavoriteteams', {
       ...user,
       teams,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
     });
-    // Catch any errors
-    // If the error is a Sequelize error, send a 500 status code
   } catch (err) {
     res.status(500).json(err);
   }
