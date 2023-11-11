@@ -9,7 +9,6 @@ router.get('/favoritesSecltionPage', async (req, res) => {
   try {
     const teamData = await Team.findAll({
       
-      
     });
 
     const teams = teamData.map((team) =>
@@ -24,6 +23,27 @@ router.get('/favoritesSecltionPage', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+const express = require('express');
+const app = express();
+
+app.use(express.static('css-js')); 
+
+
+
+// router.get('./css-js/FavoritesSectionPageStyle.css', (req, res) => {
+//   const cssPath = path.join(__dirname,'css-js', 'FavoritesSectionPageStyle.css');
+//   fs.readFile(cssPath, 'utf-8', (err, content) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     } else {
+//       res.setHeader('Content-Type', 'text/css');
+//       res.send(content);
+//     }
+//   });
+// });
 
 // GET all teams for myfavoriteteams
 router.get('/myfavoriteteams', withAuth, async (req, res) => {
