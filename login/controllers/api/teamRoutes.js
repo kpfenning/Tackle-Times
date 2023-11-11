@@ -6,14 +6,12 @@ const withAuth = require('../../utils/auth');
 // GET all teams for favoritesSecltionPage
 router.post('/favoritesSecltionPage', async (req, res) => {
   try {
-    const teamData = await Team.findAll({
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
-    });
+        const teamData = [
+            // ... your array of team objects ...
+        ];
+
+        // Render the Handlebars template and pass the team data
+        res.render('favoritesSelectionPage', { teams: teamData });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

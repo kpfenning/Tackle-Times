@@ -1,3 +1,4 @@
+
 function toggleBackground(element) {
     // Toggle the 'active' class on the parent element of the passed in element 
     const isActive = element.parentElement.classList.toggle('active');
@@ -59,10 +60,6 @@ function removeTeamFromSelection(element) {
     }
 }
 
-function updateLocalStorage() {
-    // Sets the "selectedTeams" key in localStorage to the JSON stringified version of the selectedTeams array
-    localStorage.setItem("selectedTeams", JSON.stringify(selectedTeams)); 
-}
 
 // Function to show or hide the "Next" button based on team selection
 function showNextButton(isActive) {
@@ -88,24 +85,9 @@ teamImages.forEach((image) => {
 });
 
 
-function handleTeamClick(teamId) {
-    // Defines a function called handleTeamClick that accepts a parameter called teamId
-    // Store the selected team in local storage
-    localStorage.setItem('selectedTeam', teamId); 
-    // Calls localStorage.setItem to save the teamId value passed to this function in local storage, with a key of 'selectedTeam'
-    // Pass the image source URL as well
-    const teamImageSrc = document.getElementById(teamId).src;
-    // Gets the src attribute value from the DOM element with an id matching the teamId parameter
-    localStorage.setItem('selectedTeamImage', teamImageSrc);
-    // Saves the image source URL in localStorage with a key of 'selectedTeamImage'
-    // Redirect to the second page
-    window.location.href = 'myfavoriteteams.html';
-    // Changes the browser window location to navigate to a page called 'myfavoriteteams.html'
-}
 
 
-const selectedTeams = []; 
-// Declare an empty array to store selected teams
+
 
 document.addEventListener('DOMContentLoaded', function() {
   // Add event listener to run code when DOM is loaded  
@@ -133,9 +115,14 @@ function fetchAndDisplayTeamData() {
     // Make a fetch request to the provided teamData.json path
     fetch('teamData.json') 
     // Convert the response to JSON
-    .then((response) => response.json())
+    .then((response) => {
+        console.log('Response:', response); // Log the response object
+        return response.json();
+    })
     // Process the JSON data
     .then((data) => {
+        console.log('Data:', data); // Log the fetched data
+
         // Get the Handlebars template HTML
         const source = document.getElementById('team-template').innerHTML; 
         // Compile the Handlebars template
@@ -147,11 +134,15 @@ function fetchAndDisplayTeamData() {
             // Render the template for each team
             container.innerHTML += template(team); 
         });
+    })
+    .catch((error) => {
+        console.error('Error fetching data:', error); // Log any errors
     });
 }
 
 // Call the function to fetch and display team data
 fetchAndDisplayTeamData();
+
 
 
 

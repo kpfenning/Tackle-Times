@@ -3,6 +3,13 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
+  static associate(models) {
+   
+    User.hasMany(models.Team, {
+      foreignKey: 'user_id', 
+    });
+  }
+
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
