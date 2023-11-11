@@ -152,68 +152,47 @@ const nflTeams = [
 ];
 
 
-
-// Function to filter schedule to only include selected team's games
-let selectedTeam = null;
-for (const team of nflTeams) {
-	if (team.imageSrc === selectedTeamImage) {
-		selectedTeam = team;
-		break;
-	}
-}
-if(!selectedTeam) {
-	console.error('Selected Team not found');
-	return;
-}
-const favoriteTeam = selectedTeam.id;
-
-//api call
-fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/schedule.json?api_key=qzzcby3fq9nxwz25zkfx6dj6')
-    .then(response => {
-        if(!response.ok) {
-            throw new Error('network error');
-        }
-        return response.json();
-    })
-    .then(async data => {
-		// Get the user's selected team from database
-		const response = await fetch('/api/myfavoriteteams'); 
-		const userData = await response.json();
-		const selectedTeamImageSrc = userData.selectedTeamImage; 
-	
-		// Find the team with the matching image source
-		const selectedTeam = nflTeams.find(team => team.imageSrc === selectedTeamImageSrc);
-	
-		if (selectedTeam) {
-			const favoriteTeamName = selectedTeam.id;
-			const gamesData = data.weeks;
-	
-			for (const week of gamesData) {
-				if (week && week.games && Array.isArray(week.games)) {
-					for (const game of week.games) {
-						const homeTeamName = game.home.name;
-						const awayTeamName = game.away.name;
-						const scheduledDate = game.scheduled;
-						const stadiumName = game.venue.name;
-	
-						if (homeTeamName === favoriteTeamName || awayTeamName === favoriteTeamName) {
-							self.events.push({
-								event_date: scheduledDate,
-								event_title: `${homeTeamName} vs ${awayTeamName}`,
-								event_theme: 'blue',
-								location: stadiumName,
-							});
-						}
-					}
-				}
+try {
+	// Get the user's selected team name from the database
+	const response = await fetch('/api/myfavoriteteams');
+	const userData = await response.json();
+	const favoriteTeamName = userData[0].favorite_team_id; 
+  
+	// Find the team with the matching name
+	const selectedTeam = nflTeams.find(team => team.id === favoriteTeamName);
+  
+	if (selectedTeam) {
+	  // fetch and process the schedule
+	  const data = await fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/schedule.json?api_key=qzzcby3fq9nxwz25zkfx6dj6');
+	  const gamesData = await data.json();
+  
+	  // Process the schedule for the selected team
+	  for (const week of gamesData.weeks) {
+		if (week && week.games && Array.isArray(week.games)) {
+		  for (const game of week.games) {
+			const homeTeamName = game.home.name;
+			const awayTeamName = game.away.name;
+			const scheduledDate = game.scheduled;
+			const stadiumName = game.venue.name;
+  
+			if (homeTeamName === selectedTeam.id || awayTeamName === selectedTeam.id) {
+			  self.events.push({
+				event_date: scheduledDate,
+				event_title: `${homeTeamName} vs ${awayTeamName}`,
+				event_theme: 'blue',
+				location: stadiumName,
+			  });
 			}
-		} else {
-			console.log('Selected team not found in nflTeams.');
+		  }
 		}
-	})
-	.catch(error => {
-		console.error('Error:', error);
-	});
+	  }
+	} else {
+	  console.log('Selected team not found in nflTeams.');
+	}
+  } catch (error) {
+	console.error('Error:', error);
+  }
+			
 	
 	
 	

@@ -52,7 +52,7 @@ router.get('/myfavoriteteams', withAuth, async (req, res) => {
     res.render('myfavoriteteams', {
       ...user,
       teams,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
     // Catch any errors
     // If the error is a Sequelize error, send a 500 status code
@@ -85,7 +85,7 @@ router.get('/team/:id', async (req, res) => {
     // whether the user is logged in
     res.render('team', {
       ...team,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
     // Catch any errors
   } catch (err) {
