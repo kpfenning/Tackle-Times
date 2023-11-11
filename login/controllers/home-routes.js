@@ -70,6 +70,17 @@ router.get('/myfavoriteteams', withAuth, async (req, res) => {
   }
 });
 
+app.get('/contacts', (req, res) => {
+  const contacts = [
+    { name: 'Victor', imgSrc: 'victor-img.jpg', profileUrl: 'https://github.com/vromero-beltran' },
+    { name: 'John', imgSrc: 'john-img.jpg', profileUrl: 'https://github.com/JohnHazukaJr' },
+    { name: 'Kendall', imgSrc: 'kendall-img.jpg', profileUrl: 'https://github.com/kpfenning' },
+    { name: 'Trevis', imgSrc: './DevPictures/ContactMeimgTrevis.PNG', profileUrl: 'https://github.com/Trevis-Williams' },
+  ];
+
+  res.render('contacts', { contacts });
+});
+
 // Define a GET route handler for path '/team/:id'
 router.get('/team/:id', async (req, res) => {
   // Try to execute the following code

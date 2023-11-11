@@ -1,4 +1,4 @@
-<div class="contacts">
+{{!-- <div class="contacts">
     {{!-- Contact Card for Victor --}}
     <div class="contact-card">
         <img src="victor-img.jpg" alt="Victor" class="contact-img">
@@ -19,7 +19,17 @@
 
     {{!-- Contact Card for Trevis --}}
     <div class="contact-card">
-        <img src="trevis-img.jpg" alt="Trevis" class="contact-img">
+        <img src="./DevPictures/ContactMeimgTrevis.PNG" alt="Trevis" class="contact-img">
         <a href="https://github.com/Trevis-Williams">Trevis</a> 
     </div>
+</div> --}}
+
+
+<div class="contacts">
+    {{#each contacts}}
+        <div class="contact-card">
+            <img src="{{imgSrc}}" alt="{{name}}" class="contact-img">
+            <a href="{{profileUrl}}">{{name}}</a>
+        </div>
+    {{/each}}
 </div>
