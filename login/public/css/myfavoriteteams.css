@@ -4,9 +4,7 @@
     margin: 0;
     padding: 0;
 }
-body {
-    background-color: lightgrey;
-}
+
 .takle{
     color: red;
     font-size: 100px;
@@ -105,31 +103,34 @@ body {
 
 
 .MyFavTeam {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly; 
-    align-items: center; 
-    max-width: 1424px;
-    margin: auto;
-    gap: 20px; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center; 
+  max-width: 1424px;
+  margin: auto;
+  gap: 250px;
+  margin-top: -350px; /* Reduce or eliminate the top margin to move it up */
 }
 
 .box {
-    padding: 20px;
-    width: calc(33% - 40px); 
-    box-shadow: 1px 1px 1px #000000,
-    1px 2px 1px red,
-    1px 3px 1px red,
-    1px 4px 1px blue,
-    1px 5px 1px blue,
-    1px 6px 1px blue,
-    1px 10px 5px rgba(16, 16, 16, 0.5),
-    1px 15px 10px rgba(16, 16, 16, 0.4),
-    1px 20px 30px rgba(16, 16, 16, 0.3),
-    1px 25px 50px rgba(16, 16, 16, 0.2);
-    border-radius: 10px;
-    margin-bottom: 20px; 
-    transition: backroungd-color, box-shadow 1s ease-in-out;
+  padding: 25px;
+  width: 400px;
+  box-shadow: 1px 1px 1px #000000,
+      1px 2px 1px red,
+      1px 4px 1px red,
+      1px 5px 1px blue,
+      1px 6px 1px blue,
+      1px 7px 1px blue,
+      1px 10px 5px rgba(16, 16, 16, 0.5),
+      1px 15px 10px rgba(16, 16, 16, 0.4),
+      1px 20px 30px rgba(16, 16, 16, 0.3),
+      1px 25px 50px rgba(16, 16, 16, 0.2);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  transition: background-color 1s ease-in-out, box-shadow 1s ease-in-out;
+  margin-top: 50px; 
 }
 .box:hover {
     background-color: rgba(255, 255, 255, 0.356);
@@ -225,10 +226,22 @@ p {
 
 
 h3 {
-  font-size:40px;
-  font-family: 'Nunito Sans', sans-serif;
-  text-align: center;
-  margin-bottom: 20px;
+  color: white;
+  font-size: 25px;
+  text-shadow: 1px 1px 1px #000000,
+  1px 2px 1px red,
+  1px 3px 1px red,
+  1px 4px 1px blue,
+  1px 5px 1px blue,
+  1px 6px 1px blue,
+  1px 10px 5px rgba(16, 16, 16, 0.5),
+  1px 15px 10px rgba(16, 16, 16, 0.4),
+  1px 20px 30px rgba(16, 16, 16, 0.3),
+  1px 25px 50px rgba(16, 16, 16, 0.2);
+  z-index: 1;
+ 
+  margin-bottom: auto;
+  
 }
 
 
