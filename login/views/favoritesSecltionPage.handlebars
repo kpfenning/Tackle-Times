@@ -1,44 +1,33 @@
-<div class="discription">
-    <h1 class="">Choose your <span class="highlighted-text">FAVORITE</span> teams to access their <span
-            class="highlighted-text">SCHEDULES,</span> <span class="highlighted-text">VENUES,</span> <span
-            class="highlighted-text">BROADCASTING INFORMATION,</span> and ticket <span class="highlighted-text">PURCHASE
-            OPTIONS!</span></h1>
-</div>
-<div class="footballplayer">
-    <img src="login\Nfl logos\Football player (1).png" alt="">
-</div>
-
-<div class="page-container">
 
 
-    <div class="next-btn">
-        <a href="./myfavoriteteams.html" class="myButton" id="nextButton" style="display: none;">Next</a>
+
+
+
+<body>
+    <div class="discription">
+        <h1 class="">Choose your <span class="highlighted-text">FAVORITE</span> teams to access their <span
+                class="highlighted-text">SCHEDULES,</span> <span class="highlighted-text">VENUES,</span> <span
+                class="highlighted-text">BROADCASTING INFORMATION,</span> and ticket <span
+                class="highlighted-text">PURCHASE
+                OPTIONS!</span></h1>
+      <img src="login\Nfl logos\49ers.png" alt="">
+          <div class="next-btn">
+            <a href="./myfavoriteteams.html" class="myButton" id="nextButton" style="display: none;">Next</a>
+          </div>
     </div>
 
-    <div class="All-Teams">
-        <div class="teams">
-            <!-- Include Handlebars content here -->
-            <div class="NflTeams">
-                <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
-            </div>
-        </div>
-    </div>
-</div>
+      
+    
 
 
-<script id="team-template" type="text/x-handlebars-template">
-  {{#each teams}}
-    <div class="NflTeams">
-      <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
     </div>
-  {{/each}}
-</script>
+</body>
+
+
 
 
 
 <!-- Include Handlebars library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 
-<script src="login\public\js\favoritesSecltionPage.js"></script>
-
-
+<script src="./login/public/js/favoritesSecltionPage.js"></script>
