@@ -1,4 +1,23 @@
 # Tackle-Times
+# Overview
+Welcome to Tackle Times – the comprehensive solution for all your NFL scheduling needs. Our web application is designed to streamline and enhance the experience of tracking and managing NFL schedules, providing fans with an intuitive, user-friendly platform that consolidates all necessary information in one place.
+
+# Features
+Real-Time Schedules: Access up-to-date NFL schedules, view upcoming games, and stay informed about game times and locations.
+Personalized Experience: Customize your experience by selecting your favorite teams to receive tailored updates and notifications.
+Interactive Interface: Engage with an interactive interface that makes navigation and information retrieval seamless and enjoyable.
+
+# Technologies Used
+Tackle Times leverages a combination of cutting-edge technologies and traditional web development tools to provide a robust and responsive user experience:
+
+### Handlebars:  
+For dynamic content rendering on the front end.
+### JavaScript: 
+The backbone of our application logic, ensuring a seamless and interactive user experience.
+### CSS: 
+For a polished and responsive design, ensuring that Tackle Times looks great on any device.
+### Node.js: 
+Powering our server-side operations, Node.js allows for efficient handling of requests and data management.
 
 # 15 Project 2: Interactive Full-Stack Application
 
