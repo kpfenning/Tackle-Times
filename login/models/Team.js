@@ -1,7 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Team extends Model {}
+class Team extends Model {
+  static associate(models) {
+    
+    Team.belongsTo(models.User, {
+      foreignKey: 'user_id', 
+      onDelete: 'CASCADE', 
+    });
+  }
+}
 
 Team.init(
   {

@@ -1,3 +1,4 @@
+
 function toggleBackground(element) {
     // Toggle the 'active' class on the parent element of the passed in element 
     const isActive = element.parentElement.classList.toggle('active');
