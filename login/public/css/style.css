@@ -317,3 +317,15 @@ img {
   align-items: center;
   justify-content: center;
 }
+
+.contact-card1, .contact-card2, .contact-card3, .contact-card4 {
+  width: 100px; /* Set the width of the contact card as needed */
+  height: 100px; /* Set the height of the contact card as needed */
+  background-image: url('login\views\DevPictures\ContactMeimgTrevis.PNG'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover; /* This property ensures the image covers the entire div */
+  background-position: center; /* Center the image within the div */
+  border: 1px solid #ddd; /* Optional: Add a border */
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+}
+
+
