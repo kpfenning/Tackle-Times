@@ -6,12 +6,16 @@ const withAuth = require('../../utils/auth');
 // GET all teams for favoritesSecltionPage
 router.post('/favoritesSecltionPage', async (req, res) => {
   try {
-        const teamData = [
-            // ... your array of team objects ...
-        ];
-
-        // Render the Handlebars template and pass the team data
-        res.render('favoritesSelectionPage', { teams: teamData });
+    const dTeamData = await Team.findByPk(req.body.team_id, {
+      include: [
+        {
+          model: Team,
+          attributes: ['name', 'imageSrc', 'altText'],
+        },
+      ],
+    });
+    const team = dTeamData.get({ plain: true });
+    res.render('favoritesSecltionPage', { team, loggedIn: true });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
