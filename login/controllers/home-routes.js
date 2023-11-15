@@ -73,7 +73,7 @@ router.get('/myfavoriteteams', withAuth, async (req, res) => {
 app.get('/contacts', (req, res) => {
   const contacts = [
     { name: 'Victor', imgSrc: 'victor-img.jpg', profileUrl: 'https://github.com/vromero-beltran' },
-    { name: 'John', imgSrc: 'john-img.jpg', profileUrl: 'https://github.com/JohnHazukaJr' },
+    { name: 'John', imgSrc: './DevPictures/john-hazuka.jpg', profileUrl: 'https://github.com/JohnHazukaJr' },
     { name: 'Kendall', imgSrc: './DevPictures/kendall-img.jpg', profileUrl: 'https://github.com/kpfenning' },
     { name: 'Trevis', imgSrc: './DevPictures/ContactMeimgTrevis.PNG', profileUrl: 'https://github.com/Trevis-Williams' },
   ];
