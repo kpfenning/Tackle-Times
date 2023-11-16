@@ -78,7 +78,22 @@ function showNextButton(isActive) {
 const teamImages = document.querySelectorAll(".favoriteTeam img");
 teamImages.forEach((image) => {
     // Set the onclick handler for each image 
-    image.onclick = function () {
+    image.onclick = function (event) {
+        // alert(event.target.id)
+        fetch('/api/teams/favoritesSecltionPage',{
+            method:'POST',
+            body:JSON.stringify({
+                team_id: event.target.id
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(res => res.json()).then(data => {
+            console.log("test")
+            alert('added team')
+        })
+        .catch(err => {
+            console.log(err)
+        })
     // Call toggleBackground and pass the image element when clicked
     toggleBackground(this);
     };
