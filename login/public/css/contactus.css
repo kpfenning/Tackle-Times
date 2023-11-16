@@ -1,0 +1,87 @@
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-card {
+    position: relative;
+    padding: 65px;
+    padding-bottom: 60px;
+    height: 600px;
+    width: 300px;
+    box-shadow:
+      0 0 0 1px red, 
+      0 0 0 2px blue, 
+      0 0 0 3px green, 
+      1px 1px 1px #000000,
+      1px 2px 1px red,
+      1px 4px 1px red,
+      1px 5px 1px blue,
+      1px 6px 1px blue,
+      1px 7px 1px blue,
+      1px 10px 5px rgba(16, 16, 16, 0.5),
+      1px 15px 10px rgba(16, 16, 16, 0.4),
+      1px 20px 30px rgba(16, 16, 16, 0.3),
+      1px 25px 50px rgba(16, 16, 16, 0.2);
+    border-radius: 25px;
+    margin:auto 50px;
+    
+    background-color: rgb(255, 255, 255);
+    transform: translateX(0);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-card:hover {
+    background-color: rgba(197, 197, 197, 0.884);
+    box-shadow:
+      0 0 0 1px lime, 
+      0 0 0 2px magenta, 
+      0 0 0 3px cyan, 
+      1px 1px 1px #000000,
+      1px 2px 1px lime,
+      1px 3px 1px lime,
+      1px 4px 1px magenta,
+      1px 5px 1px magenta,
+      1px 6px 1px cyan,
+      1px 10px 5px rgba(16, 255, 16, 0.5),
+      1px 15px 10px rgba(255, 16, 255, 0.4),
+      1px 20px 30px rgba(16, 255, 255, 0.3),
+      1px 25px 50px rgba(255, 16, 16, 0.2); 
+    animation: jiggle 0.5s ease-in-out;
+  }
+  
+  @keyframes jiggle {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  
+  
+.contact-img {
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    margin-bottom: 10px;
+}
+
+
+.contact-card a {
+    color: red;
+    font-size: 40px;
+    text-shadow: 1px 1px 1px #000000,
+    1px 2px 1px white,
+    1px 3px 1px white,
+    1px 4px 1px blue,
+    1px 5px 1px blue,
+    1px 6px 1px blue,
+    1px 10px 5px rgba(16, 16, 16, 0.5),
+    1px 15px 10px rgba(16, 16, 16, 0.4),
+    1px 20px 30px rgba(16, 16, 16, 0.3),
+    1px 25px 50px rgba(16, 16, 16, 0.2);
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px; 
+    left: 0;
+    right: 0;
+    text-align: center; 
+}

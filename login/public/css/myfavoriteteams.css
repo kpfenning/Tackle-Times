@@ -129,7 +129,6 @@
   border-radius: 10px;
   margin-bottom: 20px;
   background-color: rgb(255, 255, 255);
-  transition: background-color 1s ease-in-out, box-shadow 1s ease-in-out;
   margin-top: 50px; 
 }
 .box:hover {
