@@ -2,13 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Team extends Model {
-  static associate(models) {
+  // static associate(models) {
     
-    Team.belongsTo(models.User, {
-      foreignKey: 'user_id', 
-      onDelete: 'CASCADE', 
-    });
-  }
+  //   Team.belongsTo(models.User, {
+  //     foreignKey: 'user_id', 
+  //     onDelete: 'CASCADE', 
+  //   });
+  // }
 }
 
 Team.init(
@@ -27,13 +27,13 @@ Team.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'user',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,

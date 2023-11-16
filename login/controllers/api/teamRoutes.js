@@ -1,17 +1,18 @@
 const router = require('express').Router();
-const { Team, User } = require('../../models');
+const { Team, UserTeam, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
 // GET all teams for favoritesSecltionPage
 router.post('/favoritesSecltionPage', async (req, res) => {
   try {
-        const teamData = [
-            // ... your array of team objects ...
-        ];
-
-        // Render the Handlebars template and pass the team data
-        res.render('favoritesSelectionPage', { teams: teamData });
+      await UserTeam.create({
+        user_id: req.session.user_id,
+        team_id:req.body.team_id
+      })
+      res.json({
+        message: 'It worekd'
+      })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
