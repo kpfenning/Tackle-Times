@@ -1,21 +1,18 @@
 const router = require('express').Router();
-const { Team, User } = require('../../models');
+const { Team, UserTeam, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
 // GET all teams for favoritesSecltionPage
 router.post('/favoritesSecltionPage', async (req, res) => {
   try {
-    const dTeamData = await Team.findByPk(req.body.team_id, {
-      include: [
-        {
-          model: Team,
-          attributes: ['name', 'imageSrc', 'altText'],
-        },
-      ],
-    });
-    const team = dTeamData.get({ plain: true });
-    res.render('favoritesSecltionPage', { team, loggedIn: true });
+      await UserTeam.create({
+        user_id: req.session.user_id,
+        team_id:req.body.team_id
+      })
+      res.json({
+        message: 'It worked'
+      })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

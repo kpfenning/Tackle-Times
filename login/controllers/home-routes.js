@@ -1,7 +1,7 @@
 // It routes commands to the Model and View parts.
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Team, User } = require('../models');
+const { Team, User, UserTeam } = require('../models');
 
 
 // GET all teams for favoritesSecltionPage
@@ -25,10 +25,10 @@ router.get('/favoritesSecltionPage', async (req, res) => {
 });
 
 
-const express = require('express');
-const app = express();
+// // const express = require('express');
+// // const app = express();
 
-app.use(express.static('css-js')); 
+// // app.use(express.static('css-js')); 
 
 
 
@@ -56,7 +56,10 @@ router.get('/myfavoriteteams', withAuth, async (req, res) => {
 
     // Extract user and teams from userData
     const user = userData.get({ plain: true });
-    const teams = user.Teams; // Assuming the association is named "Teams"
+    const teams = user.teams; // Assuming the association is named "Teams"
+
+
+    console.log(user)
 
     // Render the 'myfavoriteteams' template, passing the team data and
     // whether the user is logged in
@@ -66,20 +69,13 @@ router.get('/myfavoriteteams', withAuth, async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+
+    console.log(err)
     res.status(500).json(err);
   }
 });
 
-app.get('/contacts', (req, res) => {
-  const contacts = [
-    { name: 'Victor', imgSrc: 'victor-img.jpg', profileUrl: 'https://github.com/vromero-beltran' },
-    { name: 'John', imgSrc: 'john-img.jpg', profileUrl: 'https://github.com/JohnHazukaJr' },
-    { name: 'Kendall', imgSrc: './DevPictures/kendall-img.jpg', profileUrl: 'https://github.com/kpfenning' },
-    { name: 'Trevis', imgSrc: './DevPictures/ContactMeimgTrevis.PNG', profileUrl: 'https://github.com/Trevis-Williams' },
-  ];
 
-  res.render('contacts', { contacts });
-});
 
 // Define a GET route handler for path '/team/:id'
 router.get('/team/:id', async (req, res) => {

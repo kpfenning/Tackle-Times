@@ -3,7 +3,7 @@
 
 
 
-<body>
+
     <div class="description">
     <h1>Choose your FAVORITE teams to access their SCHEDULES, VENUES, BROADCASTING INFORMATION, and ticket PURCHASE OPTIONS!</h1>
 </div>
@@ -12,14 +12,21 @@
           <div class="next-btn">
             <a href="./myfavoriteteams.html" class="myButton" id="nextButton" style="display: none;">Next</a>
           </div>
-    </div>
+   
 
       
     
-
-
+   
+     <div class="allTeams">
+        <div class="row" id="teamList">
+            {{#each teams}}
+        <div class="favoriteTeam">
+            <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
+        </div>
+        {{/each}}
+        </div>
     </div>
-</body>
+
 
 
 
@@ -28,4 +35,4 @@
 <!-- Include Handlebars library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 
-<script src="./login/public/js/favoritesSecltionPage.js"></script>
+<script src="/js/favoritesSecltionPage.js"></script>
