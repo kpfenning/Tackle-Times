@@ -13,7 +13,7 @@ class Team extends Model {
 
 Team.init(
   {
-    id: {
+    name: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

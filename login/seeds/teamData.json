@@ -1,6 +1,6 @@
 [
     {
-        "name": "San Francisco 49ers",
+        "name": "49ers",
         "imageSrc": "./Nfl logos/49ers.png",
         "altText": "49ers"
     },
@@ -149,5 +149,4 @@
         "imageSrc": "./Nfl logos/car panthers fixed logo.png",
         "altText": "panthers"
     }
-
 ]

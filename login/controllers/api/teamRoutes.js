@@ -11,7 +11,7 @@ router.post('/favoritesSecltionPage', async (req, res) => {
         team_id:req.body.team_id
       })
       res.json({
-        message: 'It worekd'
+        message: 'It worked'
       })
   } catch (err) {
     console.log(err);
