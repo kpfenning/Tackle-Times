@@ -28,7 +28,8 @@ router.get('/calendar', async (req, res) => {
         res.render('calendar', {
             teams,
             user,
-            loggedIn: true // Assuming you have a variable indicating if the user is logged in
+            loggedIn: true,
+            events: [] 
         });
 
     } catch (err) {
