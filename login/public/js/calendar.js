@@ -1,3 +1,5 @@
+
+const events = [];
 const nflTeams = [
 	{
 		id: 'San Francisco 49ers',
@@ -151,47 +153,56 @@ const nflTeams = [
 	},
 ];
 
+const currentDate = new Date();
+currentDate.setHours(0, 0, 0, 0);
 
-try {
-	// Get the user's selected team name from the database
-	const response = await fetch('/api/myfavoriteteams');
-	const userData = await response.json();
-	const favoriteTeamName = userData[0].favorite_team_id; 
-  
-	// Find the team with the matching name
-	const selectedTeam = nflTeams.find(team => team.id === favoriteTeamName);
-  
-	if (selectedTeam) {
-	  // fetch and process the schedule
-	  const data = await fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/schedule.json?api_key=qzzcby3fq9nxwz25zkfx6dj6');
-	  const gamesData = await data.json();
-  
-	  // Process the schedule for the selected team
-	  for (const week of gamesData.weeks) {
-		if (week && week.games && Array.isArray(week.games)) {
-		  for (const game of week.games) {
-			const homeTeamName = game.home.name;
-			const awayTeamName = game.away.name;
-			const scheduledDate = game.scheduled;
-			const stadiumName = game.venue.name;
-  
-			if (homeTeamName === selectedTeam.id || awayTeamName === selectedTeam.id) {
-			  self.events.push({
-				event_date: scheduledDate,
-				event_title: `${homeTeamName} vs ${awayTeamName}`,
-				event_theme: 'blue',
-				location: stadiumName,
-			  });
-			}
-		  }
-		}
-	  }
-	} else {
-	  console.log('Selected team not found in nflTeams.');
-	}
-  } catch (error) {
-	console.error('Error:', error);
-  }
+async function fetchAndProcessSchedule() {
+   try {
+      console.log('Fetching and processing schedule...');
+      const favoriteTeamName = localStorage.getItem('selectedTeams');
+      const selectedTeam = nflTeams.find((team) => team.id === favoriteTeamName);
+
+      if (selectedTeam) {
+         const data = await fetch('http://api.sportradar.us/nfl/official/trial/v7/en/games/current_season/schedule.json?api_key=qzzcby3fq9nxwz25zkfx6dj6');
+         const gamesData = await data.json();
+
+         for (const week of gamesData.weeks) {
+            for (const game of week.games) {
+               const homeTeamName = game.home;
+               const awayTeamName = game.away;
+               const scheduledDate = new Date(game.scheduled);
+               const stadiumName = game.location;
+
+               if (homeTeamName === selectedTeam.id || awayTeamName === selectedTeam.id) {
+                  console.log('Adding event:', {
+                     event_date: scheduledDate,
+                     event_title: `${homeTeamName} vs ${awayTeamName}`,
+                     event_theme: 'blue',
+                     location: stadiumName,
+                  });
+
+                  events.push({
+                     event_date: scheduledDate,
+                     event_title: `${homeTeamName} vs ${awayTeamName}`,
+                     event_theme: 'blue',
+                     location: stadiumName,
+                  });
+               }
+            }
+         }
+
+         const eventsUpdatedEvent = new Event('eventsUpdated');
+         window.dispatchEvent(eventsUpdatedEvent);
+      } else {
+         console.log('Selected team not found in nflTeams.');
+      }
+   } catch (error) {
+      console.error('Error:', error);
+   }
+}
+
+fetchAndProcessSchedule();
+
 			
 	
 	

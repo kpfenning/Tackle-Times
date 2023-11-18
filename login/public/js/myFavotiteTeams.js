@@ -1,4 +1,3 @@
-const selectedTeams = [];
 
 
 function showNextButton() {
@@ -57,3 +56,7 @@ const template = Handlebars.compile(source);
 // Render the template with data
 const teamList = document.getElementById('teamList');
 teamList.innerHTML = template(teamsData);
+
+export function getSelectedTeam() {
+    return selectedTeams;
+}
