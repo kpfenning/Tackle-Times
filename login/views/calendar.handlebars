@@ -9,6 +9,8 @@
 	<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 	<link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+	<script src="../public/js/myFavotiteTeams.js"></script>
+	<script type="module" src="../public/js/calendar.js" defer></script>
 
 	<style>
 		[x-cloak] {
@@ -165,6 +167,7 @@
 	</div>
 
 	<script>
+		
 		const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -177,24 +180,12 @@
 				days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 
 				events: [
-					{
-						event_date: new Date(2020, 3, 1),
-						event_title: "April Fool's Day",
-						event_theme: 'blue'
-					},
-
-					{
-						event_date: new Date(2020, 3, 10),
-						event_title: "Birthday",
-						event_theme: 'red'
-					},
-
-					{
-						event_date: new Date(2020, 3, 16),
-						event_title: "Upcoming Event",
-						event_theme: 'green'
-					}
-				],
+            	{
+                	event_date: new Date('2020-04-01T00:00:00+00:00'),
+                	event_title: "Event 1",
+                	event_theme: 'blue'
+            	}
+        	],
 				event_title: '',
 				event_date: '',
 				event_theme: 'blue',
@@ -233,7 +224,7 @@
 
 				isToday(date) {
 					const today = new Date();
-					const d = new Date(this.year, this.month, date);
+					const d = new Date(date);
 
 					return today.toDateString() === d.toDateString() ? true : false;
 				},
@@ -241,7 +232,7 @@
 				showEventModal(date) {
 					// open the modal
 					this.openEventModal = true;
-					this.event_date = new Date(this.year, this.month, date).toDateString();
+					this.event_date = new Date(date).toDateString();
 				},
 
 				addEvent() {
@@ -250,9 +241,9 @@
 					}
 
 					this.events.push({
-						event_date: this.event_date,
-						event_title: this.event_title,
-						event_theme: this.event_theme
+        				event_date: new Date(this.event_date),
+        				event_title: this.event_title,
+        				event_theme: this.event_theme
 					});
 
 					console.log(this.events);
@@ -286,6 +277,11 @@
 				}
 			}
 		}
+		
+        window.addEventListener('eventsUpdated', function () {
+           
+            console.log('Events updated. Refreshing UI...');
+        });
 	</script>
   </div>
 </body>
