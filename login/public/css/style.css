@@ -330,6 +330,7 @@ img {
 
 
 footer {
+  margin-top: 20px;
   background-color: red;
   color: var(--light);
   padding: 10px;
