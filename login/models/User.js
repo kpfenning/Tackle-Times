@@ -4,7 +4,6 @@ const sequelize = require('../config/connection');
 
 class User extends Model {
   // static associate(models) {
-   
   //   User.hasMany(models.Team, {
   //     foreignKey: 'user_id', 
   //   });
