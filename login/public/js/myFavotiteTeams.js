@@ -11,14 +11,14 @@ function toggleBackground(element) {
 function initializeSelectedTeams() {
     const selectedTeams = JSON.parse(localStorage.getItem("selectedTeams")) || [];
 
-    selectedTeams.forEach(team => {
+    selectedTeams.forEach(teams => {
         // Find the corresponding team element by ID
-        const teamElement = document.getElementById(team.name);
+        const teamElement = document.getElementById(teams.name);
 
         if (teamElement) {
             // Set the team's image source and ID
-            teamElement.src = team.src;
-            teamElement.id = team.name;
+            teamElement.src = teams.src;
+            teamElement.id = teams.team_name;
 
             // Add the "active" class to mark it as selected
             teamElement.parentElement.classList.add('active');
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
 const teamsData = {
     teams: [
         {
-            name: 'team1',
+            team_name: 'team1',
             imageSrc: 'path-to-image1.png',
             altText: 'Team 1',
         },
         {
-            name: 'team2',
+            team_name: 'team2',
             imageSrc: 'path-to-image2.png',
             altText: 'Team 2',
         },
