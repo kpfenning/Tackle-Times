@@ -74,61 +74,61 @@ function showNextButton(isActive) {
     }
 }
 
-// Attach the toggleBackground function to each team image's onclick event
-const teamImages = document.querySelectorAll(".favoriteTeam img");
-teamImages.forEach((image) => {
-    // Set the onclick handler for each image 
-    image.onclick = function (event) {
-        // alert(event.target.id)
-        fetch('/api/teams/favoritesSecltionPage',{
-            method:'POST',
-            body:JSON.stringify({
-                team_id: event.target.id
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        .then(res => res.json()).then(data => {
-            console.log("test")
-            alert('added team')
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    // Call toggleBackground and pass the image element when clicked
-    toggleBackground(this);
-    };
-});
+// // Attach the toggleBackground function to each team image's onclick event
+// const teamImages = document.querySelectorAll(".favoriteTeam img");
+// teamImages.forEach((image) => {
+//     // Set the onclick handler for each image 
+//     image.onclick = function (event) {
+//         // alert(event.target.id)
+//         fetch('/api/teams/favoritesSecltionPage',{
+//             method:'POST',
+//             body:JSON.stringify({
+//                 team_id: event.target.id
+//             }),
+//             headers: { 'Content-Type': 'application/json' },
+//         })
+//         .then(res => res.json()).then(data => {
+//             console.log("test")
+//             alert('added team')
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         })
+//     // Call toggleBackground and pass the image element when clicked
+//     toggleBackground(this);
+//     };
+// });
 
 
 
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Add event listener to run code when DOM is loaded  
-  // Get the Handlebars template
-    const source = document.getElementById('team-template').innerHTML;
-  // Get inner HTML content of element with id 'team-template'
-    const template = Handlebars.compile(source);
-  // Compile Handlebars template from source
-  // Get the container where teams will be rendered
-    const teamsContainer = document.querySelector('.teams');
-  // Select element with class 'teams'
-  // Render teams using Handlebars 
-    teamsData.forEach(function(team) {
-        // Loop through teamsData array
-        const html = template(team);  
-        // Render template for each team
-        teamsContainer.insertAdjacentHTML('beforeend', html);
-        // Insert rendered HTML into teamsContainer 
-    });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Add event listener to run code when DOM is loaded  
+//   // Get the Handlebars template
+//     const source = document.getElementById('team-template').innerHTML;
+//   // Get inner HTML content of element with id 'team-template'
+//     const template = Handlebars.compile(source);
+//   // Compile Handlebars template from source
+//   // Get the container where teams will be rendered
+//     const teamsContainer = document.querySelector('.teams');
+//   // Select element with class 'teams'
+//   // Render teams using Handlebars 
+//     teamsData.forEach(function(team) {
+//         // Loop through teamsData array
+//         const html = template(team);  
+//         // Render template for each team
+//         teamsContainer.insertAdjacentHTML('beforeend', html);
+//         // Insert rendered HTML into teamsContainer 
+//     });
+// });
 
 
 // Define a function to fetch and display team data
 function fetchAndDisplayTeamData() {
     // Make a fetch request to the provided teamData.json path
-    fetch('teamData.json') 
+    fetch('./js/teamData.json') 
     // Convert the response to JSON
     .then((response) => {
         console.log('Response:', response); // Log the response object
@@ -139,7 +139,7 @@ function fetchAndDisplayTeamData() {
         console.log('Data:', data); // Log the fetched data
 
         // Get the Handlebars template HTML
-        const source = document.getElementById('team-template').innerHTML; 
+        const source = document.getElementById('.teamList').innerHTML; 
         // Compile the Handlebars template
         const template = Handlebars.compile(source);
         // Select the container element to render the data
@@ -161,26 +161,26 @@ fetchAndDisplayTeamData();
 
 
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      // Fetch teams from teams.json
-      const response = await fetch('teamData.json');
-      const nflTeams = await response.json();
+// document.addEventListener('DOMContentLoaded', async () => {
+//     try {
+//       // Fetch teams from teams.json
+//       const response = await fetch('./js/teamData.json');
+//       const nflTeams = await response.json();
   
-      // Get the Handlebars template from HTML
-      const templateSource = document.getElementById('team-template').innerHTML;
-      const template = Handlebars.compile(templateSource);
+//       // Get the Handlebars template from HTML
+//       const templateSource = document.getElementById('team-template').innerHTML;
+//       const template = Handlebars.compile(templateSource);
   
-      // Render teams and append them to the container
-      const teamContainer = document.getElementById('teamContainer');
-      teamContainer.innerHTML = template({ teams: nflTeams });
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
+//       // Render teams and append them to the container
+//       const teamContainer = document.getElementById('teamContainer');
+//       teamContainer.innerHTML = template({ teams: nflTeams });
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   });
   
-  // Function to handle click event and toggle background
-  function toggleBackground(element) {
-    element.classList.toggle('selected');
-  }
+//   // Function to handle click event and toggle background
+//   function toggleBackground(element) {
+//     element.classList.toggle('selected');
+//   }
   
