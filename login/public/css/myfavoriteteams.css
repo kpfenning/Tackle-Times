@@ -129,13 +129,9 @@
   border-radius: 10px;
   margin-bottom: 20px;
   background-color: rgb(255, 255, 255);
-<<<<<<< HEAD
   transition: background-color 1s ease-in-out, box-shadow 1s ease-in-out;
   margin-top: 150px; 
 
-=======
-  margin-top: 50px; 
->>>>>>> 7064d2583a1884680ceff98a6e3f544e0d48da02
 }
 .box:hover {
     background-color: rgba(255, 255, 255, 0.356);
