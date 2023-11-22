@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Define a function to fetch and display team data
 function fetchAndDisplayTeamData() {
     // Make a fetch request to the provided teamData.json path
-    fetch('teamData.json') 
+    fetch('./js/teamData.json') 
     // Convert the response to JSON
     .then((response) => {
         console.log('Response:', response); // Log the response object
@@ -139,7 +139,7 @@ function fetchAndDisplayTeamData() {
         console.log('Data:', data); // Log the fetched data
 
         // Get the Handlebars template HTML
-        const source = document.getElementById('team-template').innerHTML; 
+        const source = document.getElementById('.teamList').innerHTML; 
         // Compile the Handlebars template
         const template = Handlebars.compile(source);
         // Select the container element to render the data
@@ -164,7 +164,7 @@ fetchAndDisplayTeamData();
 document.addEventListener('DOMContentLoaded', async () => {
     try {
       // Fetch teams from teams.json
-      const response = await fetch('teamData.json');
+      const response = await fetch('./js/teamData.json');
       const nflTeams = await response.json();
   
       // Get the Handlebars template from HTML

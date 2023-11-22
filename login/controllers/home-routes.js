@@ -13,7 +13,7 @@ router.get('/favoritesSecltionPage', async (req, res) => {
 
     const teams = teamData.map((team) =>
     team.get({ plain: true })
-    );
+    );console.log(teams)
     res.render('favoritesSecltionPage', {
       teams,
       loggedIn: req.session.loggedIn,
