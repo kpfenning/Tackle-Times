@@ -125,7 +125,7 @@
         "altText": "seahawks"
     },
     {
-        "name": "Tampa Bay Buccaneers",
+        "team_name": "Tampa Bay Buccaneers",
         "imageSrc": "./Nfl logos/2560px-Los_Angeles_Chargers_logo.png",
         "altText": "buccaneers"
     },
