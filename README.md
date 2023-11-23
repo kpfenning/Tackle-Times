@@ -80,3 +80,19 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 * The URL of the deployed application.
 
 * The URL of the GitHub repository, with a unique name and a README describing the project..
+
+
+
+## Screen Shots
+
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/6b6f8ee5-d4a8-47ac-bf97-70b8e82a3fd2)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/39b65f8d-205d-4785-96b4-a9be7a6e5c8e)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/f1ad0825-e56f-4743-85ca-08092dde47dc)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/9b189061-ec8e-40cf-ada8-aa6a196c6dc2)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/bda97941-9cce-4ab2-826f-d051433d026b)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/2115c64a-1296-4464-942a-5e38ca806bfa)
+![image](https://github.com/Trevis-Williams/pre-work-study-guide/assets/135195221/fdfabcdf-e389-4150-a7be-4bf2842b9ffe)
+
+## Link to deployed app
+
+
