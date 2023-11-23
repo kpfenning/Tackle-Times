@@ -95,4 +95,5 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 
 ## Link to deployed app
 
+https://tackle-a6362ae6d6c7.herokuapp.com/
 
