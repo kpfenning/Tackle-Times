@@ -9,16 +9,19 @@ function toggleBackground(element) {
 }
 
 function initializeSelectedTeams() {
-    const selectedTeams = JSON.parse(localStorage.getItem("selectedTeams")) || [];
+    // Get the selected teams from the database
+    const selectedTeams = [];
 
-    selectedTeams.forEach(teams => {
+    // run fetch to hit the endpoint /api/teams/myfavoriteteams; this is a normal http get request/ fetch i.e. no body stuff
+    fetch('/api/teams/myfavoriteteams').then()
+    selectedTeams.forEach(team => {
         // Find the corresponding team element by ID
-        const teamElement = document.getElementById(teams.name);
+        const teamElement = document.getElementById(team.name);
 
         if (teamElement) {
             // Set the team's image source and ID
-            teamElement.src = teams.src;
-            teamElement.id = teams.team_name;
+            teamElement.src = team.src;
+            teamElement.id = team.name;
 
             // Add the "active" class to mark it as selected
             teamElement.parentElement.classList.add('active');
@@ -36,12 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
 const teamsData = {
     teams: [
         {
-            team_name: 'team1',
+            name: 'team1',
             imageSrc: 'path-to-image1.png',
             altText: 'Team 1',
         },
         {
-            team_name: 'team2',
+            name: 'team2',
             imageSrc: 'path-to-image2.png',
             altText: 'Team 2',
         },

@@ -80,7 +80,8 @@ teamImages.forEach((image) => {
     // Set the onclick handler for each image 
     image.onclick = function (event) {
         // alert(event.target.id)
-        fetch('/api/teams/favoritesSecltionPage',{
+        fetch(`/api/teams/favoritesSecltionPage/${event.target.id}`, {
+        //fetch('/api/teams/favoritesSecltionPage',{
             method:'POST',
             body:JSON.stringify({
                 team_id: event.target.id

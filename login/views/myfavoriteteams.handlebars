@@ -11,7 +11,7 @@
     <div class="row" id="teamList">
         {{#each teams as |team| }}
         <div class="favoriteTeam">
-            <img id="{{name}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
+            <img id="{{id}}" src="{{imageSrc}}" alt="{{altText}}" onclick="toggleBackground(this)">
         </div>
         {{/each}}
     </div>
@@ -35,4 +35,4 @@
 
 
 
-{{!-- <script src="../public/js/myFavotiteTeams.js"></script> --}}
+<script src="/js/myFavotiteTeams.js"></script>

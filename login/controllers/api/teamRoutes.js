@@ -6,13 +6,13 @@ const withAuth = require('../../utils/auth');
 // GET all teams for favoritesSecltionPage
 router.post('/favoritesSecltionPage', async (req, res) => {
   try {
-      await UserTeam.create({
-        user_id: req.session.user_id,
-        team_id:req.body.team_id
-      })
-      res.json({
-        message: 'It worked'
-      })
+    await UserTeam.create({
+      user_id: req.session.user_id,
+      team_id:req.body.team_id
+    })
+    res.json({
+      message: 'It worked'
+    })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
